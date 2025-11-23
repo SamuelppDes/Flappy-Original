@@ -1,21 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 :root {
-    --font-main: 'Outfit', sans-serif;
-    --color-bg: #FDFCF5;
-    /* Cream */
-    --color-accent: #FFB7B2;
-    /* Soft Peach */
-    --color-text: #4A5568;
-    /* Slate Blue Dark */
-    --color-cat: #718096;
-    /* Slate Blue */
-    --color-hill-1: #B2F5EA;
-    /* Mint Light */
-    --color-hill-2: #81E6D9;
-    /* Mint Medium */
-    --color-bird: #F6E05E;
-    /* Pastel Yellow */
+    --font-main: 'Press Start 2P', cursive;
+    --color-text: #ffffff;
+    --color-text-shadow: #000000;
+    --color-accent: #eebb00;
 }
 
 * {
@@ -28,14 +17,13 @@
 }
 
 body {
-    background-color: var(--color-bg);
+    background-color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     overflow: hidden;
     font-family: var(--font-main);
-    color: var(--color-text);
 }
 
 #game-container {
@@ -43,16 +31,18 @@ body {
     width: 100%;
     height: 100%;
     max-width: 480px;
-    background-color: var(--color-bg);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    background-color: #70c5ce;
+    /* Fallback sky color */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 canvas {
     display: block;
     width: 100%;
     height: 100%;
-    /* Removed pixelated rendering for smooth vector look */
+    image-rendering: pixelated;
+    /* Crisp pixel art */
+    image-rendering: crisp-edges;
 }
 
 #ui-layer {
@@ -71,10 +61,9 @@ canvas {
 #score-display {
     position: absolute;
     top: 10%;
-    font-size: 64px;
-    font-weight: 300;
+    font-size: 40px;
     color: var(--color-text);
-    opacity: 0.8;
+    text-shadow: 2px 2px 0 var(--color-text-shadow);
     z-index: 10;
 }
 
@@ -82,15 +71,13 @@ canvas {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: rgba(253, 252, 245, 0.85);
-    /* Cream with opacity */
-    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.3s;
     pointer-events: auto;
 }
 
@@ -104,64 +91,58 @@ canvas {
 }
 
 h1 {
-    font-size: 48px;
-    font-weight: 700;
-    color: var(--color-cat);
-    margin-bottom: 10px;
-    letter-spacing: -1px;
+    font-size: 40px;
+    color: var(--color-accent);
+    text-shadow: 3px 3px 0 var(--color-text-shadow);
+    margin-bottom: 20px;
+    line-height: 1.5;
 }
 
 p {
-    font-size: 18px;
+    font-size: 14px;
     color: var(--color-text);
-    margin-bottom: 30px;
-    font-weight: 300;
+    text-shadow: 1px 1px 0 var(--color-text-shadow);
+    margin-bottom: 10px;
+    line-height: 1.5;
 }
 
 .score-board {
-    background: #fff;
-    padding: 30px;
-    border-radius: 20px;
-    margin-bottom: 30px;
+    background: #ded895;
+    border: 2px solid #543847;
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
     width: 80%;
     max-width: 300px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
 .score-board p {
-    color: var(--color-text);
+    color: #e86101;
+    text-shadow: none;
     display: flex;
     justify-content: space-between;
-    font-size: 18px;
-    margin: 15px 0;
-    font-weight: 500;
+    font-size: 16px;
+    margin: 10px 0;
 }
 
 .score-board span {
-    font-weight: 700;
-    color: var(--color-accent);
+    color: #333;
 }
 
 button {
-    background: var(--color-accent);
-    border: none;
+    background: #e86101;
+    border: 2px solid #fff;
     color: #fff;
     font-family: var(--font-main);
-    font-size: 18px;
-    font-weight: 700;
-    padding: 18px 40px;
-    border-radius: 50px;
+    font-size: 16px;
+    padding: 15px 20px;
     cursor: pointer;
-    box-shadow: 0 5px 15px rgba(255, 183, 178, 0.4);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(255, 183, 178, 0.6);
+    text-transform: uppercase;
+    box-shadow: 0 4px 0 #9e4200;
+    transition: transform 0.1s, box-shadow 0.1s;
 }
 
 button:active {
-    transform: translateY(1px);
-    box-shadow: 0 2px 10px rgba(255, 183, 178, 0.4);
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #9e4200;
 }
